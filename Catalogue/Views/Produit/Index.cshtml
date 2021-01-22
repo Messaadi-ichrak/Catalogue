@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Catalogue.GestionProduit.NewFolder.DAO.Produit>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Product List</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<form class="form-inline my-2 my-lg-0" asp-action="Search" asp-controller="Produit">
+    <input class="form-control mr-sm-2" placeholder="Search ..." type="search" name="name" />
+    <select asp-items="ViewBag.CategorietId" name="categorieid" class="form-control"></select>
+    &nbsp;&nbsp; <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Product Designation
+            </th>
+            <th>
+               Product Price
+            </th>
+            <th>
+                Category
+            </th>
+            <th>
+                Product Image
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Designation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie.Intitule)
+            </td>
+            
+            <td>
+                <img src="../images/@Html.DisplayFor(modelItem => item.Image)" width="150px"  height="100px"/>
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ProduitId">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ProduitId">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.ProduitId">Delete</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Index" asp-controller="Produit"> Afficher tout</a>

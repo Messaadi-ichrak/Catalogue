@@ -1,0 +1,43 @@
+﻿@model Catalogue.GestionProduit.NewFolder.DAO.Produit
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Designation :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Designation)
+        </dd>
+        <dt class="col-sm-2">
+            Price :
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Prix) DT &nbsp;&nbsp;
+        </dd>
+        <dt class="col-sm-2">
+            &nbsp;&nbsp;
+        </dt>
+        <dd class="col-sm-10">
+            &nbsp;&nbsp;
+        </dd>
+
+        <dt class="col-sm-2">
+
+        </dt>
+        <dd class="col-sm-10">
+            <img src="/images/@Html.DisplayFor(model => model.Image)" width="600x" height="600px" />
+        </dd>
+    </dl>
+</div>
+<div>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Order now</button>&nbsp; | &nbsp;
+    <a asp-action="Index">Back to List</a>
+</div>
